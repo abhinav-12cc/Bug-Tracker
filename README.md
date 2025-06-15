@@ -11,8 +11,16 @@ This project is a web-based Bug/Task Tracker application designed to demonstrate
 - **Mock Login System**: Implemented a simple login system using hardcoded credentials for demonstration purposes.
 - **Redirection**: On successful login, users are redirected to the dashboard.
 - **User Roles**: Supports two distinct roles: **Developer** and **Manager**.
-  - **Developer Credentials**: `email: dev@example.com`, `password: dev123` (or any custom developer account added in `src/lib/mock-data.ts`)
-  - **Manager Credentials**: `email: manager@example.com`, `password: manager123` (or any custom manager account added in `src/lib/mock-data.ts`)
+  - **Manager Credentials**:
+    - Email: `manager@example.com`
+    - Password: `manager123`
+  - **Developer Credentials**:
+    - Email: `abhinavsrivastava103@gmail.com`
+    - Password: `Abhinik123@`
+    - Email: `harshsrivastava621@gmail.com`
+    - Password: `Luvyou123@`
+    - Email: `ratankumarsingh@gmail.com`
+    - Password: `Test@123`
 
 ### 2. Task/Bug Management
 
