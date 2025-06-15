@@ -1,0 +1,89 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  DEVELOPER
+  MANAGER
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum Status {
+  OPEN
+  IN_PROGRESS
+  PENDING_APPROVAL
+  CLOSED
+  REOPENED
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String
+  email         String    @unique
+  password      String
+  role          Role      @default(DEVELOPER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  assignedTasks Task[]    @relation("AssignedTasks")
+  createdTasks  Task[]    @relation("CreatedTasks")
+  timeEntries   TimeEntry[]
+}
+
+model Task {
+  id          String    @id @default(cuid())
+  title       String
+  description String
+  priority    Priority  @default(MEDIUM)
+  status      Status    @default(OPEN)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  dueDate     DateTime?
+  assignee    User      @relation("AssignedTasks", fields: [assigneeId], references: [id])
+  assigneeId  String
+  creator     User      @relation("CreatedTasks", fields: [creatorId], references: [id])
+  creatorId   String
+  timeEntries TimeEntry[]
+  comments    Comment[]
+}
+
+model TimeEntry {
+  id        String   @id @default(cuid())
+  startTime DateTime
+  endTime   DateTime?
+  duration  Int?     // Duration in minutes
+  task      Task     @relation(fields: [taskId], references: [id])
+  taskId    String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  content   String
+  task      Task     @relation(fields: [taskId], references: [id])
+  taskId    String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
