@@ -41,29 +41,31 @@ export function LoginForm() {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     setIsLoading(true);
 
+    const formData = new FormData(event.currentTarget);
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+
     try {
-      const success = login(values.email, values.password);
-
-      if (!success) {
-        toast.error("Invalid email or password.");
-        return;
+      const success = login(email, password);
+      if (success) {
+        router.push("/dashboard");
+      } else {
+        toast.error("Invalid email or password");
       }
-
-      router.push("/dashboard");
-      router.refresh();
-    } catch (error) {
-      toast.error("Something went wrong. Please try again.");
+    } catch {
+      toast.error("An error occurred during login");
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <FormField
           control={form.control}
           name="email"

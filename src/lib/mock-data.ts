@@ -1,4 +1,4 @@
-import { User, Task, TimeEntry, Project } from "../types";
+import { User, Task } from "../types";
 
 export const users: User[] = [
   {

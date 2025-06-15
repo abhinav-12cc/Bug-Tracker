@@ -45,7 +45,7 @@ import { useState, useEffect } from "react";
 interface TaskCardProps {
   task: Task;
   assignee: User;
-  creator: User;
+  _creator: User;
 }
 
 const priorityColors = {
@@ -70,7 +70,7 @@ const projectColors = {
   DEVOPS: "bg-orange-500",
 } as const;
 
-export function TaskCard({ task, assignee, creator }: TaskCardProps) {
+export function TaskCard({ task, assignee }: TaskCardProps) {
   const user = useAuth((state) => state.user);
   const { updateTask, deleteTask, addTimeEntry } = useTasks();
   const [isEditing, setIsEditing] = useState(false);
@@ -112,7 +112,7 @@ export function TaskCard({ task, assignee, creator }: TaskCardProps) {
       updateTask(task.id, updates);
       toast.success("Task updated");
       setIsEditing(false);
-    } catch (error) {
+    } catch {
       toast.error("Failed to update task");
     } finally {
       setIsLoading(false);
@@ -136,7 +136,7 @@ export function TaskCard({ task, assignee, creator }: TaskCardProps) {
       });
       toast.success("Time logged successfully");
       setIsLoggingTime(false);
-    } catch (error) {
+    } catch {
       toast.error("Failed to log time");
     } finally {
       setIsLoading(false);

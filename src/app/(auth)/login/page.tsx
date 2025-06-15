@@ -30,9 +30,9 @@ export default function LoginPage() {
         <div className="relative z-20 mt-auto">
           <blockquote className="space-y-2">
             <p className="text-lg">
-              "This bug tracker has completely transformed how our team handles
-              issues and tasks. It's intuitive, efficient, and exactly what we
-              needed."
+              &quot;This bug tracker has completely transformed how our team
+              handles issues and tasks. It&apos;s intuitive, efficient, and
+              exactly what we needed.&quot;
             </p>
             <footer className="text-sm">Sofia Davis</footer>
           </blockquote>
@@ -40,11 +40,9 @@ export default function LoginPage() {
       </div>
       <div className="lg:p-8">
         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-          <div className="flex flex-col space-y-2 text-center">
-            <h1 className="text-2xl font-semibold tracking-tight">
-              Welcome back
-            </h1>
-            <p className="text-sm text-muted-foreground">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold">Welcome back</h1>
+            <p className="text-muted-foreground">
               Enter your credentials to sign in to your account
             </p>
           </div>

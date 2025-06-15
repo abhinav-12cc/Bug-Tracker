@@ -3,7 +3,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTasks } from "@/lib/store";
 import { useAuth } from "@/lib/store";
-import { Task, Status } from "@/types";
 import {
   BarChart,
   Bar,

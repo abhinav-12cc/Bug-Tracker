@@ -60,11 +60,11 @@ export function CreateTaskButton() {
 
     try {
       addTask(data);
-      toast.success("Task created successfully");
+      toast.success("Task created successfully.");
       setOpen(false);
       router.refresh();
-    } catch (error) {
-      toast.error("Something went wrong");
+    } catch {
+      toast.error("Failed to create task.");
     } finally {
       setIsLoading(false);
     }
@@ -79,7 +79,7 @@ export function CreateTaskButton() {
         <DialogHeader>
           <DialogTitle>Create a new task</DialogTitle>
           <DialogDescription>
-            Add a new task to your project. Click save when you're done.
+            Add a new task to your project. Click save when you&apos;re done.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={onSubmit}>
@@ -99,7 +99,7 @@ export function CreateTaskButton() {
               <Textarea
                 id="description"
                 name="description"
-                placeholder="Enter task description"
+                placeholder="Enter the task's description"
                 disabled={isLoading}
                 required
               />

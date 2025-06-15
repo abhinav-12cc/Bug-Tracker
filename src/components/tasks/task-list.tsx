@@ -1,7 +1,7 @@
 "use client";
 
 import { useTasks } from "@/lib/store";
-import { useAuth } from "@/lib/store";
+//import { useAuth } from "@/lib/store";
 import { TaskCard } from "@/components/tasks/task-card";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,12 +12,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useState, useEffect } from "react";
-import { Priority, Status, User } from "@/types";
+import { User } from "@/types";
 
 export function TaskList() {
   const tasks = useTasks((state) => state.tasks);
   const users = useTasks((state) => state.users as User[]);
-  const user = useAuth((state) => state.user);
+  //const _user = useAuth((state) => state.user);
   const [mounted, setMounted] = useState(false);
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [priorityFilter, setPriorityFilter] = useState<string>("all");
@@ -115,7 +115,7 @@ export function TaskList() {
               key={task.id}
               task={task}
               assignee={assignee}
-              creator={creator}
+              _creator={creator}
             />
           );
         })}
