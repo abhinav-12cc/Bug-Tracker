@@ -34,7 +34,7 @@ export default function LoginPage() {
               handles issues and tasks. It&apos;s intuitive, efficient, and
               exactly what we needed.&quot;
             </p>
-            <footer className="text-sm">Sofia Davis</footer>
+            <footer className="text-sm">Abhinav Srivastava</footer>
           </blockquote>
         </div>
       </div>
