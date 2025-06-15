@@ -24,13 +24,11 @@ export function DashboardStats() {
     setMounted(true);
   }, []);
 
-  // Filter tasks based on user role
   const filteredTasks =
     user?.role === "MANAGER"
       ? tasks
       : tasks.filter((task) => task.assigneeId === user?.id);
 
-  // Calculate task statistics
   const stats = {
     total: filteredTasks.length,
     open: filteredTasks.filter((t) => t.status === "OPEN").length,
@@ -41,7 +39,6 @@ export function DashboardStats() {
     closed: filteredTasks.filter((t) => t.status === "CLOSED").length,
   };
 
-  // Calculate time tracking statistics
   const timeStats = {
     totalTimeSpent: filteredTasks.reduce(
       (total, task) =>
@@ -60,7 +57,6 @@ export function DashboardStats() {
         : 0,
   };
 
-  // Generate trend data for the last 7 days
   const generateTrendData = () => {
     const last7Days = Array.from({ length: 7 }, (_, i) => {
       const date = new Date();
@@ -83,7 +79,7 @@ export function DashboardStats() {
               total +
               task.timeEntries.reduce((sum, entry) => sum + entry.duration, 0),
             0
-          ) / 60, // Convert to hours
+          ) / 60,
       };
     });
   };

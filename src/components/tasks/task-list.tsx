@@ -27,7 +27,6 @@ export function TaskList() {
     setMounted(true);
   }, []);
 
-  // Filter tasks based on selected filters (all users see all tasks)
   const filteredTasks = tasks
     .filter((task) => {
       if (statusFilter === "all") return true;

@@ -18,13 +18,11 @@ export default function TimeTrackingPage() {
   const users = useTasks((state) => state.users);
   const user = useAuth((state) => state.user);
 
-  // Filter tasks based on user role
   const visibleTasks =
     user?.role === "MANAGER"
       ? tasks
       : tasks.filter((task) => task.assigneeId === user?.id);
 
-  // Helper to get user name
   const getUser = (id: string) => users.find((u: User) => u.id === id);
 
   return (

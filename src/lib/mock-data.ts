@@ -50,7 +50,7 @@ export const tasks: Task[] = [
         id: "1",
         taskId: "1",
         userId: "1",
-        duration: 120, // 2 hours in minutes
+        duration: 120,
         description: "Initial investigation",
         startTime: "2024-06-01T09:00:00.000Z",
         endTime: "2024-06-01T09:30:00.000Z",
